@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block head_title %}{{ block.super }} Find In Site {% endblock head_title %}
+
+{% block content %}
+
+    <h1 class="mt-3">Result</h1>
+    <hr>
+    <div class="row mt-3">
+        <div class="col-4">
+            {% if item %}
+                {% for item in item %}
+                    <h5>Image: <a href="{{ item.get_absolute_url}}"> {{item.name}}</a></h5>
+                    <img src="{{item.image.url}}" alt="logo" style="max-width:100%">
+                    <hr>
+                {% endfor %}
+            {% else %}
+                <p>---</p>
+            {% endif %}
+        </div>
+    </div>
+{% endblock content %}

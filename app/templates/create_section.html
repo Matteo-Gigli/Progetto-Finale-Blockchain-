@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block head_title %}{{ block.super }} New Auction Item {% endblock head_title %}
+
+{% block content %}
+    <div class="row justify-content-center mt-4">
+        <div class="col-4">
+            <h2>Arkanet</h2>
+            <h3>New Auction Item</h3>
+            <br>
+            <form method="POST" enctype="multipart/form-data" style="max-width:100%">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <br>
+                <input type="submit" class="btn btn-info" value="Create">
+            </form>
+        </div>
+    </div>
+{% endblock content %}

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block head_title %}{{ block.super }} Make An Offer {% endblock head_title %}
+
+{% block content %}
+
+
+<div>
+    {% if user.is_authenticated %}
+        <h1> Make An Offer Here !</h1>
+        <form  method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <input type="submit" class="btn btn-info" value="Offer Now">
+            {% endif %}
+        </form>
+</div>
+{% endblock content %}

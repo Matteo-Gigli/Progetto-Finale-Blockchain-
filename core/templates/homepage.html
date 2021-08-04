@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block content %}
+
+    <h3 style="text-align:center">Welcome in ArakNet {{request.user}}</h3>
+    <h3 style="text-align:center">The Future Of Auction</h3>
+    {% for section in object_list %}
+    <div class="card-header" style="padding:20px">
+        <h5><a href="{{ section.get_absolute_url }}">{{section.name}}</a></h5>
+    </div>
+
+    <div class="card-body">
+        <div class="row">
+            <div class="col-lg-3">
+                <img src="{{section.image.url}}" style="max-width:100%">
+            </div>
+            <div class="col-lg-9">
+                <h3>Description:</h3><p><strong>{{section.description}}</strong></p>
+                <br>
+                <h5>Auction Ending on:</h5>
+                <p><strong>{{section.end_auction}}</strong></p>
+            </div>
+        </div>
+    </div>
+    <br><br>
+    {% endfor %}
+
+{% endblock content %}

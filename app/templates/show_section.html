@@ -1,0 +1,59 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% block head_title %}{{ block.super }} Item {% endblock head_title %}
+
+{% block content %}
+    <div class="card my-3" style="text-align:center">
+        <div class="card-header">
+            <h3>Name: {{item.name}}</h3>
+            <br>
+            <h6 class="card-text">Description:</h6>
+            <p><strong>{{item.description}}</strong></p>
+            <br>
+            <img src="{{item.image.url}}" style="max-width:100%">
+        </div>
+    </div>
+    <div class="card-group" style="padding:20px" >
+        <div class="card text-dark bg-secondary mb-3">
+            <div class="card-body">
+            <h5 class="card-title">Starting Price:</h5>
+
+            <p class="card-text"> {{item.starting_price}} $</p>
+            </div>
+        </div>
+        <div class="card text-dark bg-light mb-3">
+            <div class="card-body">
+            <h5 class="card-title">Buy Now:</h5>
+            <p>Click on the price beloved to buy now this Item</p>
+            <a href="{% url 'buy_now' %}"><p><strong>{{item.buy_now}} $</strong></p></a>
+            </div>
+        </div>
+        <div class="card text-dark bg-secondary mb-3">
+            <div class="card-body">
+            <h5 class="card-title">Last Offer:</h5>
+            <p>Last Offer for this Item is</p>
+            <p class="card-text">{{item.offer}} $</p>
+            </div>
+        </div>
+        <div class="card text-dark bg-light mb-3">
+            <div class="card-body">
+            <h5 class="card-title">Make an Offer:</h5>
+            <p>Make an offer for this item by the link beloved</p>
+            <a href="{{item.get_url}}">Make an offer</a>
+            </div>
+        </div>
+        <div class="card text-dark bg-secondary mb-3">
+            <div class="card-body">
+            <h5 class="card-title">End Auction:</h5>
+            <p class="card-text">{{item.end_auction}}</p>
+            </div>
+        </div>
+        <div class="card text-dark bg-light mb-3">
+            <div class="card-body">
+            <h5 class="card-title">Buyer :</h5>
+            <p class="card-text">{{item.buyer.user}}</p>
+            </div>
+        </div>
+    </div>
+
+{% endblock content %}
